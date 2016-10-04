@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" >
+    <h:head>
+        <title>Moja Pasja: Homecraft</title>
+        <h:outputStylesheet library="default" name="css/bracelets_blog.css" />
+    </h:head>
+    <h:body>
+
+        <p:panelGrid id="linkheader" columns="1" layout="grid" styleClass="linkheader">
+            <h:panelGroup layout="block">
+                <p:link>
+                    <span class="fa-stack">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-facebook-official fa-stack-1x" />                            
+                    </span>                        
+                    <span>Facebook</span>
+                </p:link>
+                <p:link>
+                    <span class="fa-stack">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-instagram fa-stack-1x" />                            
+                    </span>                        
+                    <span>Instagram</span>
+                </p:link>                
+                <p:link outcome="login">
+                    <span class="fa-stack">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-user fa-stack-1x" />                            
+                    </span>                        
+                    <span>Login</span>
+                </p:link>                                    
+            </h:panelGroup>                
+        </p:panelGrid>
+        <h:panelGroup layout="block" id="titleheader" styleClass="ui-g">
+            <h:panelGroup layout="block" styleClass="ui-g-4">
+                <h:form id="searchForm" >                
+                    <p:inputText id="tags" value="#{indexBean.tags}" maxlength="150" />
+                    <p:commandButton action="/pages/search?faces-redirect=true&amp;includeViewParams=true" icon="fa fa-search"/>
+                </h:form>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="ui-g-8">
+                <h1>Moja Pasja: Homecraft</h1>
+            </h:panelGroup>            
+        </h:panelGroup>
+         <p:panelGrid id="menu" columns="1" layout="grid">
+            <p:panelGrid id="menu-links" columns="4" layout="grid">
+                <p:link id="home" outcome="index" value="Home" />
+                <p:link id="categories" outcome="index" value="Kategorie" />
+                <p:link id="galery" outcome="index" value="Galeria" />
+                <p:link id="about" outcome="index" value="O Mnie" />           
+            </p:panelGrid>
+        </p:panelGrid>
+        SEARCH
+    </h:body>
+</html>
+

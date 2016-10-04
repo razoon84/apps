@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:s="http://java.sun.com/jsf/composite/components/bracelets">
+    <h:head>
+        <title>Moja Pasja: Handcraft</title>
+        <h:outputStylesheet library="default" name="css/bracelets_blog.css" />        
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="page-wraper">
+            <h:panelGroup layout="block" styleClass="container">
+                <h:panelGroup layout="block" styleClass="header-top">
+                    <p:link href="https://www.facebook.com/profile.php?id=100010032844703" target="_blank">
+                        <span class="fa-stack">
+                            <i class="fa fa-square-o fa-stack-2x" />
+                            <i class="fa fa-facebook-official fa-stack-1x" />                            
+                        </span>                        
+                        <span>Facebook</span>
+                    </p:link>
+                    <p:link href="https://www.instagram.com/maciekkawalerski/" target="_blank">
+                        <span class="fa-stack">
+                            <i class="fa fa-square-o fa-stack-2x" />
+                            <i class="fa fa-instagram fa-stack-1x" />                            
+                        </span>                        
+                        <span>Instagram</span>
+                    </p:link>               
+                    <p:link outcome="login" rendered="#{not indexBean.userLogIn}">
+                        <span class="fa-stack">
+                            <i class="fa fa-square-o fa-stack-2x" />
+                            <i class="fa fa-user fa-stack-1x" />                            
+                        </span>                        
+                        <span>Login</span>
+                    </p:link>  
+                    <p:link outcome="index" rendered="#{indexBean.userLogIn}">
+                        <span class="fa-stack">
+                            <i class="fa fa-square-o fa-stack-2x" /> 
+                            <i class="fa fa-area-chart fa-stack-1x" />                            
+                        </span>                        
+                        <span>Administracja</span>
+                    </p:link>
+                    <p:link outcome="index" rendered="#{indexBean.userLogIn}">
+                        <span class="fa-stack">
+                            <i class="fa fa-square-o fa-stack-2x" /> 
+                            <i class="fa fa-user fa-stack-1x" />                            
+                        </span>                        
+                        <span>Wyloguj</span>
+                    </p:link>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="container">
+                <h:panelGroup layout="block" styleClass="header-title ui-g">
+                    <h:panelGroup layout="block" styleClass="ui-g-3">
+                        <h:form id="searchForm">                
+                            <p:inputText id="tags" value="#{indexBean.tags}" maxlength="150" />
+                            <p:commandButton action="#{indexBean.actionSearch}" icon="fa fa-search" />
+                            <p:watermark for="tags" value="Wyszukaj"/>
+                        </h:form>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="ui-g-9">
+                        <h1>Moja Pasja: Handcraft</h1>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="page-menu">
+                <h:panelGroup layout="block" styleClass="container">
+                    <p:panelGrid columns="4" layout="grid" styleClass="menu">            
+                        <p:link id="home" outcome="index" value="Home" />
+                        <p:link id="categories" outcome="index" value="Kategorie" />
+                        <p:link id="galery" outcome="index" value="Galeria" />
+                        <p:link id="about" outcome="index" value="O Mnie" />            
+                    </p:panelGrid>   
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="container">
+                <h:panelGroup layout="block" styleClass="title">
+                    <h2><span>Blog</span></h2>
+                </h:panelGroup>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="container">
+                <h:panelGroup layout="block" styleClass="page-content">
+                    <p:dataScroller value="#{indexBean.articleList}" var="article" chunkSize="5" >
+                        <s:article value="#{article}" />
+                    </p:dataScroller>
+                </h:panelGroup>
+                <p:panelGrid layout="grid" styleClass="page-content-right" columns="1">
+                    <h:panelGroup layout="block">
+                        <h3>
+                            <p:link value="Nowości w galerii"/>
+                        </h3>
+                    </h:panelGroup>
+                    <p:galleria value="#{indexBean.imageList}" var="image" panelWidth="230" panelHeight="200">
+                        <img src="#{request.contextPath}/images/#{image}?width=230" alt="#{image}" title="#{image}"/>
+                    </p:galleria>
+                </p:panelGrid>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:body>
+</html>
